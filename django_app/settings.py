@@ -87,6 +87,8 @@ DATABASES = {
 }
 # The above code is the default database configuration that Django uses when you first create a project.
 DATABASES['default'] = dj_database_url.parse('postgresql://djnago_app_user:ErPmTCqwcTSqBo09VQP8P8J4CVra3oXp@dpg-csaa3h56l47c73euit8g-a.singapore-postgres.render.com/djnago_app')
+databaseURL =os.environ.get('DATABASE_URL')
+DATABASES['default'] =dj_database_url.parse(database_URL)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
