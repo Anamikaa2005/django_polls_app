@@ -11,10 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 
-import dj_database_url
-
 from pathlib import Path
-
+import os
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,10 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7=r!ivhy&=i3@3pal_1v$evp$bo&y%=#66y_+!7ucud(0d0-!='
-
+#SECRET_KEY = 'django-insecure-7=r!ivhy&=i3@3pal_1v$evp$bo&y%=#66y_+!7ucud(0d0-!='
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG',False).lower() == True
+
+ALLOWED_HOSTS = []
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -129,6 +131,7 @@ REST_FRAMEWORK = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
+
 CORS_ALLOWED_ORIGINS= [
     "http://localhost:3000" ,
 ]
